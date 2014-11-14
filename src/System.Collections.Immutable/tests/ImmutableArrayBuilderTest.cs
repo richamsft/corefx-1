@@ -269,6 +269,18 @@ namespace System.Collections.Immutable.Test
         }
 
         [Fact]
+        public void SortOneElementArray()
+        {
+            var builder = new ImmutableArray<int>.Builder();
+            builder.Add(4);
+            builder.Sort();
+            Assert.Equal(new[] { 4 }, builder);
+
+            builder.Sort(Comparer<int>.Default);
+            Assert.Equal(new[] { 4 }, builder);
+        }
+
+        [Fact]
         public void SortRange()
         {
             var builder = new ImmutableArray<int>.Builder();

@@ -590,7 +590,10 @@ namespace System.Collections.Immutable
             /// </summary>
             public void Sort()
             {
-                Array.Sort(this.elements, 0, this.Count, Comparer.Default);
+                if (Count > 1)
+                {
+                    Array.Sort(this.elements, 0, this.Count, Comparer.Default);
+                }
             }
 
             /// <summary>
@@ -599,7 +602,10 @@ namespace System.Collections.Immutable
             /// <param name="comparer">The comparer to use in sorting. If <c>null</c>, the default comparer is used.</param>
             public void Sort(IComparer<T> comparer)
             {
-                Array.Sort(this.elements, 0, this.Count, new Comparer(comparer));
+                if (Count > 1)
+                {
+                    Array.Sort(this.elements, 0, this.Count, new Comparer(comparer));
+                }
             }
 
             /// <summary>
@@ -614,8 +620,10 @@ namespace System.Collections.Immutable
                 // the bounds of the publically addressible region.
                 Requires.Range(index >= 0, "index");
                 Requires.Range(count >= 0 && index + count <= this.Count, "count");
-
-                Array.Sort(this.elements, index, count, new Comparer(comparer));
+                if (Count > 1)
+                {
+                    Array.Sort(this.elements, index, count, new Comparer(comparer));
+                }
             }
 
             /// <summary>
