@@ -685,7 +685,7 @@ namespace System.Collections.Immutable
 
                 public static Comparer Create(IComparer<T> comparer)
                 {
-                    if (comparer == null || comparer == Comparer<T>.Default) 
+                    if (comparer == null || comparer == Comparer<T>.Default)
                     {
                         return Default;
                     }
